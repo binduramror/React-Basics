@@ -1,10 +1,14 @@
 //import logo from './logo.svg';
 import React, { useState } from 'react';
 import './App.css';
-import Person from './Person/Person';
+// import Person from './Person/Person';
+import UserInput from './UserInput/UserInput'
+import UserOutput from './UserOutput/UserOutput'
 
-class App extends Component {
-  state = {
+const App = props =>  {
+
+  const [personsState, setPersonsState] = useState(
+    {
     persons : [
       { name: "Max", age: 28 },
       { name: "Manu", age: 29 },
@@ -12,41 +16,56 @@ class App extends Component {
     ],
     otherState: 'some other value'
   } 
+    );
 
-  switchNameHandler = () => {
+  const switchNameHandler = (newName) => {
     console.log("clicked");
     // this.state.persons[0].name = "bindu";
-    this.setState( {
+    setPersonsState( {
       persons : [
-      { name: "Ram", age: 28 },
-      { name: "Bhashwith", age: 29 },
+      { name: "maxllll", age: 28 },
+      { name: "XXXX", age: 29 },
       { name: "Rushi", age: 30 }
     ]
   }
       )
   }
 
-  render() {
+  const nameChangeHandler = (event) => {
+     setPersonsState( {
+      persons : [
+      { name: "PPPPPPPPP", age: 28 },
+      { name: event.target.value, age: 29 },
+      { name: "Rushi", age: 30 }
+    ]
+  }
+  )
+  }
+  
+  
       return (
     <div className="App">
-      <h1> Hi I am React Coomponent </h1>
-      <p> this is really working </p>
-      <button onClick={() => switchNameHandler('ram')}> Switch Name</button>
-      <Person 
-        name={personsState.persons[0].name} 
-        age={personsState.persons[0].age} />
-     <Person 
-       name={personsState.persons[1].name} 
-       age={personsState.persons[1].age} 
-       click={switchNameHandler.bind(this, 'new Rushi')}
-       changed={nameChangeHandler} >My hobbies :Racing </Person>
-      <Person 
-        name={personsState.persons[2].name} 
-        age={personsState.persons[2].age} />
+      
+      <ol>
+        <li> create 2 new components </li>
+        <li> UserInput should hold an input element </li>
+        <li>Output multiple UserOutput components </li>
+        <li>pass a username (of your choice) to UserOutput </li>
+        <li>add state to App component </li>
+        <li> add a method to manipulate state </li>
+        <li> pass the event-handler method reference to user over </li>
+        <li> ensure that the new input entered by the user </li>
+        <li> add two-way-binding to your input </li>
+        <li> add styling </li>
+      </ol>
+      <UserInput />
+      <UserOutput userName="ajksdfh"/>
+      <UserInput userName="ajksdfh"/>
+      <UserOutput userName="ajksdfh"/>
     </div>
 
   );
-  }
+  
 
 }
 
