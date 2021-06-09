@@ -1,42 +1,48 @@
 //import logo from './logo.svg';
-import React, { Component,useState } from 'react'; 
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-// import Person from './Person/Person';
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
+import Person from './Person/Person';
+
 class App extends Component {
   state = {
-    username: 'ram'
+    persons : [
+      { name: "Max", age: 28 },
+      { name: "Manu", age: 29 },
+      { name: "Max", age: 30 }
+    ],
+    otherState: 'some other value'
   } 
 
-  usernameChangeHandler = (event) => {
-    this.setState({username: event.target.value});
+  switchNameHandler = () => {
+    console.log("clicked");
+    // this.state.persons[0].name = "bindu";
+    this.setState( {
+      persons : [
+      { name: "Ram", age: 28 },
+      { name: "Bhashwith", age: 29 },
+      { name: "Rushi", age: 30 }
+    ]
   }
-
+      )
+  }
 
   render() {
       return (
     <div className="App">
-      
-      <ol>
-        <li> create 2 new components </li>
-        <li> UserInput should hold an input element </li>
-        <li>Output multiple UserOutput components </li>
-        <li>pass a username (of your choice) to UserOutput </li>
-        <li>add state to App component </li>
-        <li> add a method to manipulate state </li>
-        <li> pass the event-handler method reference to user over </li>
-        <li> ensure that the new input entered by the user </li>
-        <li> add two-way-binding to your input </li>
-        <li> add styling </li>
-      </ol>
-      <UserInput 
-        changed={this.usernameChangeHandler}
-        currentName={this.state.username} />
-      <UserOutput userName={this.state.username} />
-      <UserInput userName={this.state.username}/>
-      <UserOutput userName={this.state.username}/>
+      <h1> Hi I am React Coomponent </h1>
+      <p> this is really working </p>
+      <button onClick={() => switchNameHandler('ram')}> Switch Name</button>
+      <Person 
+        name={personsState.persons[0].name} 
+        age={personsState.persons[0].age} />
+     <Person 
+       name={personsState.persons[1].name} 
+       age={personsState.persons[1].age} 
+       click={switchNameHandler.bind(this, 'new Rushi')}
+       changed={nameChangeHandler} >My hobbies :Racing </Person>
+      <Person 
+        name={personsState.persons[2].name} 
+        age={personsState.persons[2].age} />
     </div>
 
   );
